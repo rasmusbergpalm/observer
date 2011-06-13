@@ -1,0 +1,28 @@
+<h1><%= Site.url %>
+	<div class="float-right">
+		<%- pie.Helper.Html.link('[edit]', { 'action': 'edit', 'id' : Site.id }) %>
+		<%- pie.Helper.Html.link('[delete]', { 'action': 'remove', 'id' : Site.id }) %>
+	</div>
+</h1>
+
+<div class="clear-both"></div>
+<p>Frequency: <%= Site.frequency %></p>
+<p>Pattern: <%= Site.pattern %></p>
+
+<h3>Checks</h3>
+
+<table class='related'>
+<tr>
+    <th>Date</th>
+    <th>Status</th>
+    <th>Latency</th>
+</tr>
+<% Site.Check.forEach(function(check) { %>
+	<%  var status = 'failed'; if(check.status == 200){status = 'passed';} %>
+	<tr class="<%= status %>">
+		<td><%= check.date %></td>
+		<td><%= check.status %></td>
+        <td><%= check.latency %></td>
+	</tr>
+<% }) %>
+</table>

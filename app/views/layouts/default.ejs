@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html>
+
+	<head>
+		<title>Observer </title>
+		<%- pie.Helper.Html.css('default.css') %>
+
+		<%- pie.Helper.Html.js('https://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js') %>
+		<%- pie.Helper.Html.js('jquery-syntax/jquery.syntax.min.js') %>
+
+		<script type="text/javascript">
+			$(function() {
+		        $.syntax({
+					'tabWidth'    : 4,
+					'blockLayout' : 'plain'
+				});
+			});
+		</script>
+	</head>
+
+	<body>
+		<div id="header" class="corner-bottom">
+			<ul id="site-links" class="inline">
+				<li><%- pie.Helper.Html.link('users', { 'controller' : 'users' }) %></li>
+				<li><%- pie.Helper.Html.link('sites', { 'controller' : 'sites' }) %></li>
+			</ul>
+			<h1>Observer</h1> <small>beep... beep...</small>
+		</div>
+
+		<div id="content" class="corner-all">
+			<% if (typeof flash !== 'undefined' && flash && flash.info) { %>
+				<div id="flash"><%= flash.info %></div>
+			<% } %>
+
+			<%- body %>
+		</div>
+
+		<div id="footer">&copy; <%- new Date().getFullYear() %> <%- pie.Helper.Html.link('fakewaffle', 'mailto:morris.justin@gmail.com')%></div>
+	</body>
+</html>

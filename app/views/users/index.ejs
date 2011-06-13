@@ -1,0 +1,10 @@
+<h1>Users Index</h1>
+
+<ul>
+	<% User.forEach(function(user){ %>
+		<li>
+			<h3><%- pie.Helper.Html.link(user.email, { 'action' : 'view', 'id' : user.id }) %></h3>
+		</li>
+	<% }) %>
+</ul>
+

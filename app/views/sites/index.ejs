@@ -1,0 +1,17 @@
+<h1>Sites Index
+	<div class="float-right">
+		<%- pie.Helper.Html.link('[add a site]', { 'action' : 'add' }) %>
+	</div>
+</h1>
+<div class="clear-both"></div>
+
+<ul>
+	<% Site.forEach(function(site){ %>
+		<li>
+			<h1><%- pie.Helper.Html.link(site.url, { 'action' : 'view', 'id' : site.id }) %></h1>
+			
+			<p><%= site.frequency %></p>
+            <p><%= site.pattern %></p>
+		</li>
+	<% }) %>
+</ul>
