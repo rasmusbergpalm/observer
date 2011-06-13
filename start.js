@@ -29,6 +29,11 @@ pie.fs   = require('fs');
 pie.sys  = require('sys');
 pie.mime = require(pie.paths.pie.modules.mime);
 
+pie.util = require('util');
+pie.url  = require('url');
+pie.http = require('http');
+pie.intervals = new Array();
+
 express = require(pie.paths.pie.modules.express);
 server  = express.createServer(
 	express.favicon(),

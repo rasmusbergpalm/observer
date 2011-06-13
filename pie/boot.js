@@ -4,7 +4,6 @@ exports.boot = function(callback) {
 	loadControllers();
 	loadPieHelpers();
 	loadAppHelpers();
-
 	callback();
 }
 
