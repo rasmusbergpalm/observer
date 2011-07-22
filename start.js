@@ -31,19 +31,31 @@ pie.mime = require(pie.paths.pie.modules.mime);
 
 pie.util = require('util');
 pie.url  = require('url');
+pie.dns  = require('dns');
 pie.http = require('http');
+pie.https = require('https');
 pie.intervals = new Array();
 
+
 express = require(pie.paths.pie.modules.express);
+connect = require('connect');
 server  = express.createServer(
 	express.favicon(),
 	express.bodyParser(),
 	express.cookieParser(),
 	express.session({
 		secret: pie.config.app.core.secret
-	})
+	}),
+	connect.basicAuth('admin', 'a32')
 );
 
 require(pie.paths.pie.boot).boot(function() {
+	pie.app.models.Site.find('all',{},function(result){
+        result.Site.forEach(function(site){
+            pie.app.controllers.SitesController.addInterval(site.id, site);
+        });
+    });
+    
 	require(pie.paths.pie.dispatcher).dispatch();
+
 });

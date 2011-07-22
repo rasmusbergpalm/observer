@@ -188,6 +188,6 @@ table{
 td, th {
     text-align: left;
 }
-td.failed{
+tr.failed{
     background-color: pink;
 }

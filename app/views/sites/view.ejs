@@ -1,4 +1,4 @@
-<h1><%= Site.url %>
+<h1><%= Site.host %>
 	<div class="float-right">
 		<%- pie.Helper.Html.link('[edit]', { 'action': 'edit', 'id' : Site.id }) %>
 		<%- pie.Helper.Html.link('[delete]', { 'action': 'remove', 'id' : Site.id }) %>
@@ -6,8 +6,7 @@
 </h1>
 
 <div class="clear-both"></div>
-<p>Frequency: <%= Site.frequency %></p>
-<p>Pattern: <%= Site.pattern %></p>
+<p><%= Site.protocol %>://<%= Site.adress %>:<%= Site.port %><%= Site.path %> checked every <%= Site.frequency %> seconds</p>
 
 <h3>Checks</h3>
 
@@ -20,7 +19,7 @@
 <% Site.Check.forEach(function(check) { %>
 	<%  var status = 'failed'; if(check.status == 200){status = 'passed';} %>
 	<tr class="<%= status %>">
-		<td><%= check.date %></td>
+		<td><%= new Date(check.date) %></td>
 		<td><%= check.status %></td>
         <td><%= check.latency %></td>
 	</tr>
